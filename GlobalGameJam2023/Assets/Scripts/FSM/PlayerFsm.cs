@@ -26,10 +26,6 @@ public class PlayerFsm : MonoBehaviour
     private bool isCrosshairActive, doOnce;
     #endregion
 
-
-    [SerializeField] private LayerMask layerMaskInteract;
-        [SerializeField] private string excluseLayerName = null;
-
     private Camera _camera;
 
     private void Start()
@@ -41,76 +37,37 @@ public class PlayerFsm : MonoBehaviour
         //currentState = keySearchState;
     }
 
-
     private void Update()
     {
         //currentState.UpdateState(this);
 
-        // var nearestGameObject = GetNearestGameObject();
-        // if (nearestGameObject == null) return;
-        //var ray = _camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        var nearestGameObject = GetNearestGameObject();
 
-        int mask = 1 << LayerMask.NameToLayer(excluseLayerName) | layerMaskInteract.value;
-
-        if (Physics.Raycast(transform.position,fwd,out hit,5,mask))
+        if(nearestGameObject != null)
         {
-            result = hit.transform.gameObject;
-
-            if(result == null)  return;
-
-            var interactable = result.GetComponent<IInteractable>();
+            var interactable = nearestGameObject.GetComponent<IInteractable>();
             if(interactable != null)
             {
                 interactable?.Meet();
                 crosshair.color = Color.red;
-                //SetCrosshair();
                 pressEUI.SetActive(true);
+
+                if (Input.GetKey(KeyCode.E))
+                {
+                    interactable?.Interact();
+                }
             }   
-            else if(interactable == null || result == null)
+            else if(interactable == null)
             {
-                // if (isCrosshairActive)
-                // {
-                //     CrosshairChange(false);
-                //     doOnce = false;
-                // }
                 crosshair.color = Color.white;
                 pressEUI.SetActive(false); 
-            }    
-
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                interactable?.Interact();
             }
         }
-        
-
-        // var interactable = nearestGameObject.GetComponent<IInteractable>();
-        // if(interactable != null)
-        // {
-        //     interactable?.Meet();
-        //     crosshair.color = Color.red;
-        //     //SetCrosshair();
-        //     pressEUI.SetActive(true);
-        // }   
-        // else if(interactable == null || nearestGameObject == null)
-        // {
-        //     // if (isCrosshairActive)
-        //     // {
-        //     //     CrosshairChange(false);
-        //     //     doOnce = false;
-        //     // }
-        //     crosshair.color = Color.white;
-        //     pressEUI.SetActive(false); 
-        // }    
-
-
-        // if (Input.GetKey(KeyCode.E))
-        // {
-        //     interactable?.Interact();
-        // }
+        else if(nearestGameObject == null)
+        {
+            crosshair.color = Color.white;
+            pressEUI.SetActive(false); 
+        }    
     }
 
     //var interactable;
@@ -134,23 +91,16 @@ public class PlayerFsm : MonoBehaviour
     //         interactable?.Interact();
     //     }
     // }
-GameObject result = null;
-RaycastHit hit;
-    // private GameObject GetNearestGameObject()
-    // {
-    //     RaycastHit hit;
-    //     Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-    //     GameObject result = null;
-    //     //var ray = _camera.ScreenPointToRay(Input.mousePosition);
-    //     //if (Physics.Raycast(ray, out var hit, 5))
-    //     int mask = 1 << LayerMask.NameToLayer(excluseLayerName) | layerMaskInteract.value;
-
-    //     if (Physics.Raycast(transform.position,fwd,out hit,5,mask))
-    //     {
-    //         result = hit.transform.gameObject;
-    //     }
-    //     return result;
-    // }
+    private GameObject GetNearestGameObject()
+    {
+        GameObject result = null;
+        var ray = _camera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out var hit, 5))
+        {
+            result = hit.transform.gameObject;
+        }
+        return result;
+    }
     
 }
