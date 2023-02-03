@@ -33,27 +33,25 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject switchObject,flashLight,doorObject;
 
+
+    void OnEnable()
+    {
+        EventManager.OnTransitionStart.AddListener(MakeEmbus);
+        EventManager.OnTransitionEnd.AddListener(MakeWander);
+    }
+    void OnDisable()
+    {
+        EventManager.OnTransitionStart.RemoveListener(MakeEmbus);
+        EventManager.OnTransitionStart.RemoveListener(MakeWander);
+    }
+
     void Start()
     {
         executingState = ExecutingState.WANDER;
         currentState = wanderState;
         currentState.EnterState(this);
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("car"))
-        {
-            executingState = ExecutingState.EMBUS;
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.CompareTag("car"))
-        {
-            executingState = ExecutingState.WANDER;
-        }
-    }
+    
 
     void Update()
     {
@@ -117,6 +115,15 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += (gravity * Time.deltaTime);
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void MakeEmbus()
+    {
+        executingState = ExecutingState.EMBUS;
+    }
+    void MakeWander()
+    {
+        executingState = ExecutingState.WANDER;
     }
 
     public void SwitchState(PlayerStates nextState)
