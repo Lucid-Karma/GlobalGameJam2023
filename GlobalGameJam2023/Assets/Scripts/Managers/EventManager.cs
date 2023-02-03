@@ -9,4 +9,6 @@ public static class EventManager
 
     public static UnityEvent OnTransitionStart = new UnityEvent();
     public static UnityEvent OnTransitionEnd = new UnityEvent();
+    public static UnityEvent OnOpenPapper = new UnityEvent();
+    public static UnityEvent OnClosePapper = new UnityEvent();
 }

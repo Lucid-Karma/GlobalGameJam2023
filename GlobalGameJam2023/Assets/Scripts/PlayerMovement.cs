@@ -31,18 +31,22 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded,isDoor = false;
 
-    [SerializeField] private GameObject switchObject,flashLight,doorObject;
+    [SerializeField] private GameObject flashLight,doorObject;
 
 
     void OnEnable()
     {
         EventManager.OnTransitionStart.AddListener(MakeEmbus);
         EventManager.OnTransitionEnd.AddListener(MakeWander);
+        EventManager.OnOpenPapper.AddListener(MakeEmbus);
+        EventManager.OnClosePapper.AddListener(MakeWander);
     }
     void OnDisable()
     {
         EventManager.OnTransitionStart.RemoveListener(MakeEmbus);
         EventManager.OnTransitionStart.RemoveListener(MakeWander);
+        EventManager.OnOpenPapper.RemoveListener(MakeEmbus);
+        EventManager.OnClosePapper.RemoveListener(MakeWander);
     }
 
     void Start()
@@ -86,18 +90,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = speed / 2;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (switchObject.activeInHierarchy)
-            {
-                switchObject.SetActive(false);
-            }
-            else
-            {
-                switchObject.SetActive(true);
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.V))

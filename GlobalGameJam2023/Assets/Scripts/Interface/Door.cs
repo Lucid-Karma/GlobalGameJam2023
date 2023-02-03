@@ -7,12 +7,11 @@ public class Door : MonoBehaviour, IInteractable
 {
     private bool doorOpen = false;
     [SerializeField] private int timeToShowUI = 1;
-    [SerializeField] private GameObject showDoorLockedUI = null;
-    [SerializeField] private GameObject doorObject;
+    [SerializeField] private GameObject showDoorLockedUI = null,doorObject;
 
     [SerializeField] private Key key = null;
 
-    [SerializeField] private int waitTimer = 1;
+    [SerializeField] private float waitTimer = 1;
     [SerializeField] private bool pauseInteraction = false;
 
     //[SerializeField] private GameObject futureDoor;
@@ -29,7 +28,7 @@ public class Door : MonoBehaviour, IInteractable
         {
             if (!doorOpen && !pauseInteraction)
             {
-                doorObject.transform.DORotate(doorObject.transform.eulerAngles + new Vector3(0, -90, 0), 1.5f).SetEase(Ease.InOutCubic)
+                doorObject.transform.DORotate(transform.eulerAngles + new Vector3(0, -90, 0), 1.5f).SetEase(Ease.InOutCubic)
                 .OnStart(() =>
                 {
                     // isDoor = true;
@@ -43,7 +42,7 @@ public class Door : MonoBehaviour, IInteractable
             }
             else if (doorOpen && !pauseInteraction)
             {
-                doorObject.transform.DORotate(doorObject.transform.eulerAngles + new Vector3(0, 90, 0), 1.5f).SetEase(Ease.InOutCubic)
+                doorObject.transform.DORotate(transform.eulerAngles + new Vector3(0, 90, 0), 1.5f).SetEase(Ease.InOutCubic)
                 .OnStart(() =>
                 {
                     // isDoor = true;
