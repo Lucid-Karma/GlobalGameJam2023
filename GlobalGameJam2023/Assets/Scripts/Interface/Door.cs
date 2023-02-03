@@ -15,7 +15,7 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private int waitTimer = 1;
     [SerializeField] private bool pauseInteraction = false;
 
-    [SerializeField] private GameObject futureDoor;
+    //[SerializeField] private GameObject futureDoor;
 
     private IEnumerator PauseDoorInteraction()
     {
@@ -76,10 +76,10 @@ public class Door : MonoBehaviour, IInteractable
     {
         PlayDoTween();
 
-        if (key.hasKey)
-        {
-            var interactable = futureDoor.GetComponent<IInteractable>();
-            interactable?.Interact();
-        }
+        // if (key.hasKey)
+        // {
+        //     var interactable = futureDoor.GetComponent<IInteractable>();
+        //     interactable?.Interact();
+        // }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public static LevelLoader instance;
     public Animator transition;
 
     public float transitionTime = 1;
@@ -14,9 +13,9 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
+
     /* public void LoadNextLevel()
      {
          StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -40,12 +39,14 @@ public class LevelLoader : MonoBehaviour
     {
         transition.SetTrigger("Start");
 
+        EventManager.OnTransitionStart.Invoke();
+
         yield return new WaitForSeconds(transitionTime);
 
         playerObject.transform.position = new Vector3(15, 2, -10);
 
         transition.SetTrigger("End");
 
-
+        EventManager.OnTransitionEnd.Invoke();
     }
 }
