@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
 
-    public float speed = 12f, gravity = -9.81f, groundDistance = 0.4f, jumpHeight = 3f, sceneNumber;
+    public float speed = 12f, gravity = -9.81f, groundDistance = 0.4f, jumpHeight = 3f;
 
     public Transform groundCheck;
     public LayerMask groundMask;

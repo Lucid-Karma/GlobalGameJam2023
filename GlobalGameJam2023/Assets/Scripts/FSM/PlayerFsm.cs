@@ -98,7 +98,7 @@ public class PlayerFsm : MonoBehaviour
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(/*ray*/transform.position, fwd, out hit, 5))
+        if (Physics.Raycast(/*ray*/transform.position, fwd, out hit, 6))
         {
             result = hit.transform.gameObject;
         }
