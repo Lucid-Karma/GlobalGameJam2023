@@ -18,8 +18,8 @@ public class InfoZone : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            animator.SetBool("CloseInfo", true);
             animator.SetBool("OpenInfo", false);
-            animator.SetBool("CloseInfo", false);
         } 
     }
 }
