@@ -11,6 +11,8 @@ public class LevelLoader : MonoBehaviour
 
     GameObject playerObject;
 
+    [SerializeField] private GameObject goPosition;
+
     private void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -43,7 +45,8 @@ public class LevelLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        playerObject.transform.position = new Vector3(15, 2, -10);
+        Vector3 goTargetPosition = new Vector3(goPosition.transform.position.x,goPosition.transform.position.y,goPosition.transform.position.z);
+        playerObject.transform.position = goTargetPosition;
 
         transition.SetTrigger("End");
 

@@ -95,8 +95,10 @@ public class PlayerFsm : MonoBehaviour
     private GameObject GetNearestGameObject()
     {
         GameObject result = null;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out var hit, 5))
+        if (Physics.Raycast(/*ray*/transform.position, fwd, out hit, 5))
         {
             result = hit.transform.gameObject;
         }

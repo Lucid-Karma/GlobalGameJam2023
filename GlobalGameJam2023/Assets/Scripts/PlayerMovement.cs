@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     Vector3 velocity;
-    bool isGrounded,isDoor = false;
+    bool isGrounded;
 
     [SerializeField] private GameObject flashLight,doorObject;
 
