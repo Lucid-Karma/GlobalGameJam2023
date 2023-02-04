@@ -18,7 +18,7 @@ public class ChoiceSceneTrigger : MonoBehaviour
         {
             choiceCanvas.SetActive(true);
 
-            EventManager.OnOpenPapper.Invoke();
+            EventManager.OnTransitionStart.Invoke();
 
             Cursor.lockState = CursorLockMode.None;
 
