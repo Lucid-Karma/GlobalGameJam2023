@@ -44,16 +44,16 @@ public class MouseLook : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnOpenPapper.AddListener(MouseControlOff);
-        EventManager.OnClosePapper.AddListener(MouseControlOn);
+        // EventManager.OnOpenPapper.AddListener(MouseControlOff);
+        // EventManager.OnClosePapper.AddListener(MouseControlOn);
         EventManager.OnTransitionStart.AddListener(MouseControlOff);
         EventManager.OnTransitionEnd.AddListener(MouseControlOn);
 
     }
     private void OnDisable()
     {
-        EventManager.OnOpenPapper.RemoveListener(MouseControlOff);
-        EventManager.OnClosePapper.RemoveListener(MouseControlOn);
+        // EventManager.OnOpenPapper.RemoveListener(MouseControlOff);
+        // EventManager.OnClosePapper.RemoveListener(MouseControlOn);
         EventManager.OnTransitionStart.RemoveListener(MouseControlOff);
         EventManager.OnTransitionEnd.RemoveListener(MouseControlOn);
     }

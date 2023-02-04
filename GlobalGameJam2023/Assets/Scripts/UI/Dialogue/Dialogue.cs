@@ -50,7 +50,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            EventManager.OnTransitionEnd.Invoke();
+            EventManager.OnClosePapper.Invoke();
             gameObject.SetActive(false);
         }
     }

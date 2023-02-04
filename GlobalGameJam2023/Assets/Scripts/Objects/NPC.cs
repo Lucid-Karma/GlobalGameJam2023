@@ -16,7 +16,7 @@ public class NPC : MonoBehaviour
         {
             uiPanel.SetActive(true);
             EventManager.OnHumanTalk.Invoke();
-            EventManager.OnTransitionStart.Invoke();
+            EventManager.OnOpenPapper.Invoke();
 
             gameObject.SetActive(false);
         }

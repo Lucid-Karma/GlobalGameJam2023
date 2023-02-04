@@ -9,7 +9,7 @@ public class ButtonController : MonoBehaviour
 
     public void ClosePapper()
     {
-        EventManager.OnClosePapper.Invoke();
+        EventManager.OnTransitionEnd.Invoke();
         Debug.Log("SELAMUN ALEYKUM");
 
         tipsAnimator.SetBool("ClosePapper",true);
@@ -20,7 +20,7 @@ public class ButtonController : MonoBehaviour
 
     public void Choice1()
     {
-        EventManager.OnClosePapper.Invoke();
+        EventManager.OnTransitionEnd.Invoke();
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -28,7 +28,7 @@ public class ButtonController : MonoBehaviour
     }
     public void Choice2()
     {
-        EventManager.OnClosePapper.Invoke();
+        EventManager.OnTransitionEnd.Invoke();
 
         Cursor.lockState = CursorLockMode.Locked;
 
