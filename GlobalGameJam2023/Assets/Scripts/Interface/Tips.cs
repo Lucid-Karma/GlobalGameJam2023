@@ -10,7 +10,7 @@ public class Tips : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        EventManager.OnOpenPapper.Invoke();
+        EventManager.OnTransitionStart.Invoke();
 
         animator.SetBool("OpenPapper",true);
         animator.SetBool("ClosePapper", false);
