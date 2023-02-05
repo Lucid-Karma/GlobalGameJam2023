@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    [SerializeField] private GameObject flashLight,doorObject;
+    [SerializeField] private GameObject flashLight;
 
 
     void OnEnable()
