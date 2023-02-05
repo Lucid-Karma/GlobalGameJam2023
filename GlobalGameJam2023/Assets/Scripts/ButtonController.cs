@@ -5,12 +5,12 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] private Animator tipsAnimator;
-    [SerializeField] private GameObject choiceCanvas;
+    [SerializeField] private GameObject choiceCanvas,choice1,choice2;
 
     public void ClosePapper()
     {
         EventManager.OnTransitionEnd.Invoke();
-        Debug.Log("SELAMUN ALEYKUM");
+        // Debug.Log("SELAMUN ALEYKUM");
 
         tipsAnimator.SetBool("ClosePapper",true);
         tipsAnimator.SetBool("OpenPapper", false);
@@ -23,6 +23,9 @@ public class ButtonController : MonoBehaviour
         EventManager.OnTransitionEnd.Invoke();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        choice2.SetActive(true);
+        choice1.SetActive(false);
 
         choiceCanvas.SetActive(false);
     }
