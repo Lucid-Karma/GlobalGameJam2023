@@ -394,9 +394,9 @@ MonoBehaviour:
   executingState: 0
   controller: {fileID: 5026705533862765444}
   speed: 10
-  gravity: -19.62
+  gravity: -29.43
   groundDistance: 0.4
-  jumpHeight: 3
+  jumpHeight: 2
   groundCheck: {fileID: 5026705533986595030}
   groundMask:
     serializedVersion: 2
