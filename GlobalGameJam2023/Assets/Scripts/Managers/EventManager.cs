@@ -13,4 +13,6 @@ public static class EventManager
     public static UnityEvent OnClosePapper = new UnityEvent();
 
     public static UnityEvent OnHumanTalk = new UnityEvent();
+    public static UnityEvent OnFinalTalk = new UnityEvent();
+
 }
