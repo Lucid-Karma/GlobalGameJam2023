@@ -1,9 +1,9 @@
 Past Soviet
 
+
 A First Person Mystery game with an interesting story set in the USSR.
 
 The game is made in 48 hours for GGJ 2023 by a team includes a story creator, a 3d artist, a level designer, and two game developers.
-
 https://globalgamejam.org/2023/games/past-soviet-5
 
 The aim of the game: to reach the optimum end of the game by collecting the necessary inventories and collecting information from the clues. The options presented to the player determine the end of the game.
